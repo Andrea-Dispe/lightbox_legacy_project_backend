@@ -18,6 +18,6 @@ app.listen(process.env.PORT, (err) => {
   if (err) {
     console.log('Rumble in the Bronx! ' + err);
   } else {
-    console.log(`👽 <(Communications active at port ${config.port})`);
+    console.log(`👽 <(Communications active at port ${process.env.PORT})`);
   }
 });
