@@ -3,7 +3,7 @@ const fs = require('fs');
 const http = require('http');
 
 const router = require('./router');
-const config = require('./config');
+// const config = require('./config');
 const db = require('./models/index');
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(router);
 
 //Turn on when database is fully connected
-// db.sequelize.sync();
+db.sequelize.sync();
 
 app.listen(process.env.PORT, (err) => {
   if (err) {
