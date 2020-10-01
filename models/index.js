@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 
-const config = require('./config');
 
 const basename = path.basename(__filename);
 
@@ -14,18 +13,7 @@ const db = {};
 
 //collect all models, put into database object
 
-const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
-  logging: console.log,
-  host: config.host,
-  dialect: config.dialect,
-  define: { timestamps: false },
-  pool: {
-    max: config.pool.max,
-    min: config.pool.min,
-    acquire: config.pool.acquire,
-    idle: config.pool.idle,
-  },
-});
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 fs.readdirSync(__dirname)
   .filter((file) => {
