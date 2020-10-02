@@ -1,18 +1,19 @@
 const express = require('express');
 const fs = require('fs');
 const http = require('http');
-
 const router = require('./router');
 // const config = require('./config');
 const db = require('./models/index');
-
 const app = express();
 
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb', extended: true}));
+
 app.use(router);
 
-//Turn on when database is fully connected
 db.sequelize.sync();
+
+console.log(process.env.DATABASE_URL);
 
 app.listen(process.env.PORT, (err) => {
   if (err) {
