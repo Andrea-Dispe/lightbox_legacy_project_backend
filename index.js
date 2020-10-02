@@ -1,8 +1,5 @@
 const express = require('express');
-const fs = require('fs');
-const http = require('http');
 const router = require('./router');
-// const config = require('./config');
 const db = require('./models/index');
 const app = express();
 

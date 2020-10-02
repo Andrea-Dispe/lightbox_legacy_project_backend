@@ -1,8 +1,7 @@
 const { sequelize } = require('../models/index');
 const db = require('../models/index');
-const usermdl = require('../models/usermdl');
+// const usermdl = require('../models/usermdl');
 
-//TODO: update to get user-specific feed
 exports.getUserFeed = async (req, res) => {
   try {
     console.log('inside getUserFeed');
@@ -55,7 +54,7 @@ exports.getOneImage = async (req, res) => {
 
 exports.likeImage = async (req, res) => {
   try {
-    const { imageId, userId } = req.body;
+    const { imageId } = req.body;
     const image = await db.Image.findOne({
       where: { id: imageId },
     });
